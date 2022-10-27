@@ -90,7 +90,7 @@ class CategoryController extends Controller
     }
 
     public function changeCatgeoryStatus(Request $request){
-        dd($request);
+        //dd($request);
         if(!empty($request->all())){
             if($request->status == 'Active'){
                 //dd('uu');
