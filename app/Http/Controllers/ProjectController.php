@@ -15,7 +15,7 @@ class ProjectController extends Controller
      */
     public function index()
     {
-        $projects = Project::where(['status'=>1])->get();
+        $projects = Project::get();
         $projectData = [];
         foreach($projects as $value){
             $category = Category::where(['id'=>$value->category_id])->first();
@@ -52,7 +52,7 @@ class ProjectController extends Controller
             $project->title = $request->title;
             $project->description = $request->description;
             $project->save();
-            return redirect('admin/project');
+            return redirect('admin/project')->with('message','Project Added SuccessFully!');
         }
     }
 
@@ -98,7 +98,7 @@ class ProjectController extends Controller
 
             );
             $project = Project::where(['id'=>$id])->update($projectarr);
-            return redirect('admin/project');
+            return redirect('admin/project')->with('message','Project updated Successfully!');
         }
     }
 
@@ -111,5 +111,20 @@ class ProjectController extends Controller
     public function destroy($id)
     {
         //
+    }
+
+    public function changeProjectStatus(Request $request){
+        if(!empty($request->all())){
+            if($request->status == 'Active'){
+                $update = Project::where(['id'=>$request->project_id])->update(['status'=>1]);
+                return redirect('admin/project')->with('message','project status change successfully!');
+            }else{
+                $update = Project::where(['id'=>$request->project_id])->update(['status'=>0]);
+                return redirect('admin/project')->with('message','project status change successfully!');
+
+
+            }
+        }
+
     }
 }

@@ -1,6 +1,11 @@
 @extends('admin.layouts.app')
 @section('content')
 <div class="card shadow mb-4">
+@if (session('message'))
+        <div class="alert alert-success">
+        <a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a> {{ session('message') }}
+        </div>
+    @endif
                         <div class="card-header py-3">
                             <h6 class="m-0 font-weight-bold text-primary">DataTables Example</h6>
                         </div>
@@ -30,12 +35,19 @@
                                                 @endif
                                             </td>
                                             <td>{{$project->created_at}}</td>
+                                            <form action="{{route('projectStatusChange')}}" method="post">
+                                            @csrf              
+
+                                                <input type="hidden" value="{{$project->id}}" name="project_id">
                                             <td>@if($project->status == 1)
-                                                <button class="btn btn-success">Active</button> 
+                                                <input name="status" value="Block" type="hidden">
+                                                <button class="btn btn-success" type="submit">Active</button> 
                                             @else
-                                                <button class="btn btn-danger">In-active</button>
+                                            <input name="status" value="Active" type="hidden">
+                                                <button class="btn btn-danger" type="submit">In-active</button>
                                              @endif
                                             </td>
+                                            </form>
                                             <td><a href="{{route('project.edit',$project->id)}}" class="btn btn-primary"><i class="fa fa-edit"></i>Edit</a></td>
                                            
                                         </tr>

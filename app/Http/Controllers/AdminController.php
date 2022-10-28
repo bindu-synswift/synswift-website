@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use App\Models\Contact;
 
 class AdminController extends Controller
 {
@@ -80,5 +81,10 @@ class AdminController extends Controller
     public function destroy($id)
     {
         //
+    }
+
+    public function contactList(){
+        $contacts = Contact::get();
+        return view('admin.contact.list',['contacts'=>$contacts]);
     }
 }

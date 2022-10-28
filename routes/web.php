@@ -31,12 +31,14 @@ Route::post('sendmail', [App\Http\Controllers\HomeController::class, 'sendContac
 Route::get('single-project/{id}', [App\Http\Controllers\HomeController::class, 'singleProject'])->name('singleProject');
 Route::group(['middleware' => ['auth'], 'prefix' => 'admin'], function () {
     Route::get('dashboard', [App\Http\Controllers\AdminController::class, 'index'])->name('dashboard');
+    Route::get('contacts', [App\Http\Controllers\AdminController::class, 'contactList'])->name('contacts');
 
     Route::resource('category', App\Http\Controllers\CategoryController::class);
     Route::resource('project', App\Http\Controllers\ProjectController::class);
     Route::resource('jobs', App\Http\Controllers\JobController::class);
     Route::post('change-status', [App\Http\Controllers\JobController::class,'statusChange'])->name('statusChange');
     Route::post('change-category-status', [App\Http\Controllers\CategoryController::class,'changeCatgeoryStatus'])->name('catgeoryStatusChange');
+    Route::post('change-project-status', [App\Http\Controllers\ProjectController::class,'changeProjectStatus'])->name('projectStatusChange');
    
 
 });

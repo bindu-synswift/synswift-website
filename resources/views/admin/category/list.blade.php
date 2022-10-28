@@ -1,6 +1,11 @@
 @extends('admin.layouts.app')
 @section('content')
 <div class="card shadow mb-4">
+@if (session('message'))
+        <div class="alert alert-success">
+        <a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a> {{ session('message') }}
+        </div>
+    @endif
                         <div class="card-header py-3">
                             <h6 class="m-0 font-weight-bold text-primary">DataTables Example</h6>
                         </div>
@@ -34,6 +39,7 @@
                                                 @endif
                                             </td>
                                             </form>
+                                            <td><a href="{{route('category.edit',$category->id)}}" class="btn btn-primary"><i class="fa fa-edit"></i>Edit</a></td>
                                            
                                         </tr>
                                         @endforeach

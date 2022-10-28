@@ -14,7 +14,7 @@ class CategoryController extends Controller
      */
     public function index()
     {
-        $categories = Category::where(['status'=>1])->get();
+        $categories = Category::get();
         return view('admin.category.list',['categories'=>$categories]);
     }
 
@@ -40,7 +40,7 @@ class CategoryController extends Controller
             $category = new Category;
             $category->name = $request->name;
             $category->save();
-            return redirect('admin/category');
+            return redirect('admin/category')->with('message','Category Added successfully!');
         }
     }
 
@@ -63,7 +63,8 @@ class CategoryController extends Controller
      */
     public function edit($id)
     {
-        //
+        $category = Category::where(['id'=>$id])->first();
+        return view('admin.category.edit',['category'=>$category]);
     }
 
     /**
@@ -75,7 +76,10 @@ class CategoryController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        if(!empty($request->all())){
+            $update = Category::where(['id'=>$id])->update(['name'=>$request->name]);
+            return redirect('admin/category')->with('message','Category Updated Successfully!');
+        }
     }
 
     /**
@@ -95,11 +99,11 @@ class CategoryController extends Controller
             if($request->status == 'Active'){
                 //dd('uu');
                 $update = Category::where(['id'=>$request->category_id])->update(['status'=>1]);
-                return redirect('admin/catrgory');
+                return redirect('admin/category')->with('message','Category status change Successfully!');
             }else{
                 //dd('ddd');
-                $update = Category::where(['id'=>$request->category_id])->update(['status'=>1]);
-                return redirect('admin/catrgory');
+                $update = Category::where(['id'=>$request->category_id])->update(['status'=>0]);
+                return redirect('admin/category');
 
             }
         }
