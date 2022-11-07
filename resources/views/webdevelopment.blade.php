@@ -7,30 +7,12 @@
     <section class="page-title page-title-layout8 bg-overlay bg-overlay-gradient bg-parallax">
       <div class="bg-img"><img src="assets/images/page-titles/8.jpg" alt="background"></div>
       <div class="container">
-        <div class="row align-items-center">
-          <div class="col-sm-12 col-md-12 col-lg-12 col-xl-6">
+        <div class="row justify-content-center">
+          <div class="col-sm-9 col-md-9 col-lg-9">
             <h1 class="pagetitle__heading">Keep Business Safe And Ensure High Availability.</h1>
-            <p class="pagetitle__desc">We are experienced professionals who understand that It services is changing, and
+            <p class="pagetitle__desc text-center">We are experienced professionals who understand that It services is changing, and
               are true partners who care about your success. Our team provides a consultative approach on emerging
               technology.</p>
-          </div><!-- /.col-xl-6 -->
-          <div class="col-sm-12 col-md-12 col-lg-12 col-xl-6 cta-banner-wrapper d-flex justify-content-end">
-            <div class="cta-banner text-center">
-              <div class="slick-carousel" data-slick='{"slidesToShow": 1, "arrows": false, "dots": true}'>
-                <div class="cta__item">
-                  <div class="cta__icon"><i class="icon-operating-system"></i></div>
-                  <h4 class="cta__title">Software License</h4>
-                  <p class="cta__desc">Build dynamic request templates with associated workflows, and tasks.</p>
-                </div><!-- /.cta__item -->
-                <div class="cta__item">
-                  <div class="cta__icon"><i class="icon-dos"></i></div>
-                  <h4 class="cta__title">Privileged Access</h4>
-                  <p class="cta__desc">Extend proven Tech best practices to HR, finance, and other service
-                    delivery areas.</p>
-                </div><!-- /.cta__item -->
-              </div><!-- /.slick-carousel -->
-            </div><!-- /.cta-banner -->
-          </div><!-- /.col-xl-6 -->
         </div><!-- /.row -->
       </div><!-- /.container -->
     </section><!-- /.page-title -->

@@ -33,15 +33,7 @@
             <div class="position-relative offset-xl-1">
               <i class="icon-quote"></i>
               <p class="mb-30">{{$project->description}}</p>
-            <!--  <p class="mb-30">You need information security services to proactively prevent and protect confidential
-                data, as well as detect internal and external threats. Protect your business by choosing managed
-                security service provider. Our security services can help ensure your business Trusted by the world's
-                best organizations.</p>
-              <p class="mb-30">for 15 years and running, it has been delivering smiles to hundreds of IT advisors,
-                developers, users, and business owners. Easy solutions for all difficult IT problems to ensure high
-                availability.</p>
-              <p class="mb-30">Provide users with appropriate view and access permissions to requests, problems,
-                changes, contracts, assets, solutions, and reports with our experienced professionals. </p>-->
+        
               <ul class="list-items list-items-layout2 list-unstyled d-flex flex-wrap list-horizontal mb-50">
                 <li>Eliminate Repeat Entry</li>
                 <li>Simplify Communication</li>
