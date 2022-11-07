@@ -24,8 +24,8 @@ class CreateContact extends Migration
             $table->string('subject');
 
             $table->text('message');
-            $table->text('website')->nullable()->default();
-            $table->text('inquery')->nullable()->default(1);
+            $table->text('website')->nullable();
+            $table->text('inquery')->nullable();
             $table->timestamps();
         });
     }
