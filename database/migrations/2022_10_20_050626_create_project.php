@@ -19,7 +19,8 @@ class CreateProject extends Migration
             $table->string('name');
             $table->string('title');
             $table->string('description');
-            $table->string('type');
+            $table->string('project_terms');
+            $table->string('project_icon');
             $table->boolean('status')->default(1)->nullable();
             $table->foreign('category_id')->references('id')->on('category')->onDelete('cascade');
             $table->timestamps();

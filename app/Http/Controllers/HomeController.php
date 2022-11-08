@@ -35,8 +35,15 @@ class HomeController extends Controller
     }
 
     public function application(){
-        $projects = Project::where(['status'=>1,'type'=>2])->get();
-        return view('application',['projects'=>$projects]);
+        $projects = Project::where(['status'=>1,'category_id'=>1])->get();
+        $projectsData = [];
+        foreach($projects as $key=>$value){
+            $projectTerms = explode(',',$value->project_terms);
+            $value->terms = $projectTerms;
+            $projectsData[] =$value;
+        }
+        //dd($projectsData);
+         return view('application',['projects'=>$projectsData]);
     }
     public function career(){
         $careerJobs = CareerJob::where(['status'=>1])->get();
@@ -55,12 +62,25 @@ class HomeController extends Controller
     }
 
     public function webDevelopment(){
-        $projects = Project::where(['status'=>1,'type'=>1])->get();
-        return view('webdevelopment',['projects'=>$projects]);
+        $projects = Project::where(['status'=>1,'category_id'=>2])->get();
+        $projectsData = [];
+        foreach($projects as $key=>$value){
+            $projectTerms = explode(',',$value->project_terms);
+            $value->terms = $projectTerms;
+            $projectsData[] =$value;
+        }
+        return view('webdevelopment',['projects'=>$projectsData]);
     }
 
     public function uiUxPage(){
-        return view('uiux');
+        $projects = Project::where(['status'=>1,'category_id'=>3])->get();
+        $projectsData = [];
+        foreach($projects as $key=>$value){
+            $projectTerms = explode(',',$value->project_terms);
+            $value->terms = $projectTerms;
+            $projectsData[] =$value;
+        }
+        return view('uiux',['projects'=>$projectsData]);
     }
 
     public function whyUS(){

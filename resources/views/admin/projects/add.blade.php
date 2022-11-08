@@ -8,7 +8,7 @@
         <div class="card border-left-primary shadow h-100 py-2">
             <div class="card-body">
             <div>
-                <form action="{{route('project.store')}}" method="post">
+                <form action="{{route('project.store')}}" method="post" enctype='multipart/form-data'>
                 @csrf
                     <div class="row">
                         
@@ -42,14 +42,9 @@
                         </div>
                     </div>
                     <div class="row">
-                      <label for="fname">Project type</label>
+                      <label for="fname">Project Terms</label>
                         <div class="col-md-7 form-group" >
-                            <select class="form-control select2" name="type">
-                                <option value="">Select Type</option>
-                                <option value="1">web Project</option>
-                                <option value="2">Application project</option>
-                                <option value="3">Frontend/React Project</option>
-                            </select>
+                           <input name="project_term" class="form-control" placeholder="Enter project Li with (,) separated " type="text">
                          </div>
                     </div>
                     <div class="row">
@@ -58,6 +53,13 @@
                         <div class="col-md-7 form-group">
                         <textarea type="text" id="fname" name="description" class="form-control" placeholder="Project name.."></textarea>
 
+                        </div>
+                    </div>
+                    <div class="row">
+                        
+                        <label for="fname">Project Icon</label>
+                        <div class="col-md-7 form-group">
+                        <input name="filename" class="form-control"  type="file">
                         </div>
                     </div>
                     <div class="row">

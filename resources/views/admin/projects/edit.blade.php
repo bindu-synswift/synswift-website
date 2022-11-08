@@ -8,7 +8,7 @@
         <div class="card border-left-primary shadow h-100 py-2">
             <div class="card-body">
             <div>
-                <form action="{{route('project.update',$project->id)}}" method="post">
+                <form action="{{route('project.update',$project->id)}}" method="post" enctype='multipart/form-data'>
                 @csrf
                 @method('PUT')
 
@@ -17,6 +17,14 @@
                         <label for="fname">Project Name</label>
                         <div class="col-md-7 form-group">
                         <input type="text" id="fname" name="name" value="{{$project->name}}" class="form-control" placeholder="Project name..">
+
+                        </div>
+                    </div>
+                    <div class="row">
+                        
+                        <label for="fname">Title</label>
+                        <div class="col-md-7 form-group">
+                        <input type="text" id="fname" value="{{$project->title}}" name="title" class="form-control" placeholder="Project title..">
 
                         </div>
                     </div>
@@ -32,6 +40,27 @@
                             @endforeach
                             @endif
                         </select>   
+                        </div>
+                    </div>
+                    <div class="row">
+                      <label for="fname">Project Terms</label>
+                        <div class="col-md-7 form-group" >
+                           <input name="project_term" value="{{$project->project_terms}}" class="form-control" placeholder="Enter project Li with (,) separated " type="text">
+                         </div>
+                    </div>
+                    <div class="row">
+                        
+                        <label for="fname">Description</label>
+                        <div class="col-md-7 form-group">
+                        <textarea type="text" id="fname" name="description" class="form-control" placeholder="Project name..">{{$project->description}}</textarea>
+
+                        </div>
+                    </div>
+                    <div class="row">
+                    
+                        <label for="fname">Project Icon</label>
+                        <div class="col-md-7 form-group">
+                        <input name="filename" class="form-control"  type="file">
                         </div>
                     </div>
                     

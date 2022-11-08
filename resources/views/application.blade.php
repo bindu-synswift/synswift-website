@@ -43,14 +43,15 @@
                     <div class="service-item">
                         <div class="service__content">
                             <div class="service__icon">
-                                <img src="assets/images/projects/spacium.png" alt="spacium store"/>
+                                <img src="{{asset('/project/images/'.$value->project_icon)}}" alt="spacium store"/>
                             </div><!-- /.service__icon -->
                             <h4 class="service__title">{{$value->title}}</h4>
                             <p class="service__desc">{{$value->description}}</p>
                             <ul class="list-items list-unstyled mb-30">
-                                <li>React Native</li>
-                                <li>Laravel</li>
-                                <li>Electron</li>
+                                @foreach($value->terms as $term)
+                                <li>{{$term}}</li>
+                                @endforeach
+                                
                             </ul>
                         </div><!-- /.service-content -->
                     </div><!-- /.service-item -->

@@ -7,16 +7,18 @@
         </div>
     @endif
                         <div class="card-header py-3">
-                            <h6 class="m-0 font-weight-bold text-primary">DataTables Example</h6>
+                            <h6 class="m-0 font-weight-bold text-primary">Project List</h6>
+                            <a href="{{route('project.create')}}" class="btn btn-primary" style="float:right;"><i class="fa fa-add"></i>Add Project</a>
                         </div>
                         <div class="card-body">
                             <div class="table-responsive">
                                 <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
                                     <thead>
                                         <tr>
+                                            <th>Icon</th>
                                             <th>Name</th>
                                             <th>Category</th>
-                                            <th>Project type</th>
+                                            <th>Project Terms</th>
                                             <th>Created_at</th>
                                             <th>Status</th>
                                             <th>Action</th>
@@ -26,13 +28,10 @@
                                     <tbody>
                                         @foreach($projects as $key=>$project)
                                         <tr>
+                                            <td><img width="100" height="100" src="{{asset('/project/images/'.$project->project_icon)}}"></td>
                                             <td>{{$project->name}}</td>
                                             <td>{{$project->categoryName}}</td>
-                                            <td>@if($project->type == 1)
-                                                <span>Web Project</span>
-                                                @else
-                                                <span>Application Project</span>
-                                                @endif
+                                            <td>{{$project->project_terms}}
                                             </td>
                                             <td>{{$project->created_at}}</td>
                                             <form action="{{route('projectStatusChange')}}" method="post">

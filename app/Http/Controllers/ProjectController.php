@@ -19,7 +19,10 @@ class ProjectController extends Controller
         $projectData = [];
         foreach($projects as $value){
             $category = Category::where(['id'=>$value->category_id])->first();
-            $value->categoryName = $category->name;
+            if(!empty($category)){
+                $value->categoryName = $category->name;
+            }
+           
             $projectData[]=$value;
         }
         return view('admin.projects.list',['projects'=>$projectData]);
@@ -44,15 +47,26 @@ class ProjectController extends Controller
      */
     public function store(Request $request)
     {
+      
         if(!empty($request)){
+          
+            if($request->file('filename')) {
+               
             $project = new Project;
+            $image = $request->file('filename');
+            $name=$image->getClientOriginalName();
+            $image->move(public_path().'/project/images/', $name);  
+            $project->project_icon = $name;
             $project->name = $request->name;
             $project->category_id = $request->category;
-            $project->type = $request->type;
+            $project->project_terms = $request->project_term;
             $project->title = $request->title;
             $project->description = $request->description;
+            //dd($project);
             $project->save();
             return redirect('admin/project')->with('message','Project Added SuccessFully!');
+            }
+           
         }
     }
 
@@ -91,15 +105,34 @@ class ProjectController extends Controller
      */
     public function update(Request $request, $id)
     {
-        if(!empty($id)){
-            $projectarr = array(
-                'name'=>$request->name,
-                'category_id'=>$request->category,
-
-            );
-            $project = Project::where(['id'=>$id])->update($projectarr);
-            return redirect('admin/project')->with('message','Project updated Successfully!');
+        $getProject =  Project::where(['id'=>$id])->first();
+        if(!empty($getProject)){
+          if(!empty($request->category)){
+                $category = $request->category;
+          }else{
+            $category = $getProject->category_id;
+          }
+          if($request->file('filename')){
+            $image = $request->file('filename');
+            $name=$image->getClientOriginalName();
+            $image->move(public_path().'/project/images/', $name); 
+                  $projectarr = array(
+                      'name'=>$request->name,
+                      'category_id'=>$category,
+                      'description'=>$request->description,
+                      'project_terms'=>$request->project_term,
+                      'title' => $request->title,
+                      'project_icon'=> $name,
+  
+      
+                  );
+                  $project = Project::where(['id'=>$id])->update($projectarr);
+                  return redirect('admin/project')->with('message','Project updated Successfully!');
+              
+          }
+        
         }
+       
     }
 
     /**

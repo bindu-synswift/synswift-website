@@ -39,20 +39,22 @@
             <div class="service-item">
               <div class="service__content">
                 <div class="service__icon">
-                  <img src="assets/images/projects/creator-stock.png" alt="creator stock"/>
+                  <img src="{{asset('/project/images/'.$value->project_icon)}}" alt="creator stock"/>
                 </div><!-- /.service__icon -->
                 <h4 class="service__title">{{$value->title}}</h4>
                 <p class="service__desc">{{$value->description}} </p>
                 <ul class="list-items list-unstyled mb-30">
-                  <li>Business IT alignment</li>
-                  <li> IT financial management</li>
-                  <li> IT service management</li>
+                @foreach($value->terms as $term)
+                                <li>{{$term}}</li>
+                                @endforeach
                 </ul>
               </div><!-- /.service-content -->
             </div><!-- /.service-item -->
             </a>
           </div><!-- /.col-lg-4 -->
           @endforeach
+          @else
+          Records Not Found!
           @endif
         </div><!-- /.row -->
       </div><!-- /.container -->

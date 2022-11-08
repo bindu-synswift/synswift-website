@@ -32,19 +32,20 @@
         </div><!-- /.row -->
         <div class="row">
           <!-- service item #1 -->
+          @if(!empty($projects))
+          @foreach($projects as $key=>$value)
           <div class="col-sm-12 col-md-6 col-lg-4">
             <div class="service-item">
               <div class="service__content">
                 <div class="service__icon">
                   <i class="icon-server"></i>
                 </div><!-- /.service__icon -->
-                <h4 class="service__title">IT Management <br> Services</h4>
-                <p class="service__desc">IT management service that manages and oversees the IT infrastructure of
-                  any civil organization responsible for network and operations which includes data </p>
+                <h4 class="service__title">{{$value->title}} <br> </h4>
+                <p class="service__desc">{{$value->description}} </p>
                 <ul class="list-items list-unstyled mb-30">
-                  <li>Business IT alignment</li>
-                  <li> IT financial management</li>
-                  <li> IT service management</li>
+                  @foreach($value->terms as $term)
+                  <li>{{$term}}</li>
+                  @endforeach
                 </ul>
                 <a href="it-solutions-single.html" class="btn btn__secondary">
                   <span>Read More</span>
@@ -53,116 +54,10 @@
               </div><!-- /.service-content -->
             </div><!-- /.service-item -->
           </div><!-- /.col-lg-4 -->
-          <!-- service item #2 -->
-          <div class="col-sm-12 col-md-6 col-lg-4">
-            <div class="service-item">
-              <div class="service__content">
-                <div class="service__icon">
-                  <i class="icon-cyberspace"></i>
-                </div><!-- /.service__icon -->
-                <h4 class="service__title">Cyber Security<br> Services</h4>
-                <p class="service__desc">Drive your business and manage risk with a global industry leader in
-                  cybersecurity, cloud, and managed security services and extend your team with leading experts.</p>
-                <ul class="list-items list-unstyled mb-30">
-                  <li>Internet security</li>
-                  <li>Automotive security</li>
-                  <li>Cyberwarfare</li>
-                </ul>
-                <a href="it-solutions-single.html" class="btn btn__secondary">
-                  <span>Read More</span>
-                  <i class="icon-arrow-right"></i>
-                </a>
-              </div><!-- /.service-content -->
-            </div><!-- /.service-item -->
-          </div><!-- /.col-lg-4 -->
-          <!-- service item #3 -->
-          <div class="col-sm-12 col-md-6 col-lg-4">
-            <div class="service-item">
-              <div class="service__content">
-                <div class="service__icon">
-                  <i class="icon-cloud-computing"></i>
-                </div><!-- /.service__icon -->
-                <h4 class="service__title">Cloud Computing<br> Services</h4>
-                <p class="service__desc">Cloud computing is on-demand availability of computer system resources,
-                  especially data storage computing power, without direct active management by the user.</p>
-                <ul class="list-items list-unstyled mb-30">
-                  <li>Private cloud services</li>
-                  <li>Public cloud services</li>
-                  <li>Hybrid cloud services</li>
-                </ul>
-                <a href="it-solutions-single.html" class="btn btn__secondary">
-                  <span>Read More</span>
-                  <i class="icon-arrow-right"></i>
-                </a>
-              </div><!-- /.service-content -->
-            </div><!-- /.service-item -->
-          </div><!-- /.col-lg-4 -->
-          <!-- service item #4 -->
-          <div class="col-sm-12 col-md-6 col-lg-4">
-            <div class="service-item">
-              <div class="service__content">
-                <div class="service__icon">
-                  <i class="icon-permission"></i>
-                </div><!-- /.service__icon -->
-                <h4 class="service__title">IT Consulting <br> Services</h4>
-                <p class="service__desc">TTrying to solve all your IT challenges internally can become costly and a
-                  major distraction, Leveraging knowledgeable IT consulting firms like ushelps business. </p>
-                <ul class="list-items list-unstyled mb-30">
-                  <li>Scoping & planning</li>
-                  <li>Process & system design</li>
-                  <li>Project management support</li>
-                </ul>
-                <a href="it-solutions-single.html" class="btn btn__secondary">
-                  <span>Read More</span>
-                  <i class="icon-arrow-right"></i>
-                </a>
-              </div><!-- /.service-content -->
-            </div><!-- /.service-item -->
-          </div><!-- /.col-lg-4 -->
-          <!-- service item #5 -->
-          <div class="col-sm-12 col-md-6 col-lg-4">
-            <div class="service-item">
-              <div class="service__content">
-                <div class="service__icon">
-                  <i class="icon-code"></i>
-                </div><!-- /.service__icon -->
-                <h4 class="service__title">Software Dev<br> Services</h4>
-                <p class="service__desc">With shorter product cycles, innovation, and mergers contributing to
-                  constant change, you are faced making business decisions every day to advance.</p>
-                <ul class="list-items list-unstyled mb-30">
-                  <li>Implementation</li>
-                  <li>Testing & documenting</li>
-                  <li>Deployment & maintenance</li>
-                </ul>
-                <a href="it-solutions-single.html" class="btn btn__secondary">
-                  <span>Read More</span>
-                  <i class="icon-arrow-right"></i>
-                </a>
-              </div><!-- /.service-content -->
-            </div><!-- /.service-item -->
-          </div><!-- /.col-lg-4 -->
-          <!-- service item #6 -->
-          <div class="col-sm-12 col-md-6 col-lg-4">
-            <div class="service-item">
-              <div class="service__content">
-                <div class="service__icon">
-                  <i class="icon-internet"></i>
-                </div><!-- /.service__icon -->
-                <h4 class="service__title">Backup & Recovery<br> Services</h4>
-                <p class="service__desc">While you can’t predict unexpected events, we’ll ensure the right
-                  precautions are in place to minimize downtime and keep you moving in the right direction.</p>
-                <ul class="list-items list-unstyled mb-30">
-                  <li>Compression & Deduplication</li>
-                  <li>Duplication & Encryption</li>
-                  <li>Multiplexing & Refactoring</li>
-                </ul>
-                <a href="it-solutions-single.html" class="btn btn__secondary">
-                  <span>Read More</span>
-                  <i class="icon-arrow-right"></i>
-                </a>
-              </div><!-- /.service-content -->
-            </div><!-- /.service-item -->
-          </div><!-- /.col-lg-4 -->
+          @endforeach
+          @else
+          Records not found!
+          @endif
         </div><!-- /.row -->
       </div><!-- /.container -->
     </section><!-- /.Services Layout 2 -->
